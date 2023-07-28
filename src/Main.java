@@ -10,6 +10,7 @@ public class Main {
         Scanner path = new Scanner(System.in);
 
         File oldLog = new File(path.nextLine());
+        // Формируем название файла для нового лога
         String newFileName = oldLog.getName();
         newFileName = newFileName.substring(0, newFileName.indexOf(".")) + "_new" +
                 newFileName.substring(newFileName.indexOf("."), newFileName.length());
@@ -23,10 +24,11 @@ public class Main {
                 line = reader.readLine();
             }
             String content = oldContent.toString();
+            // Производим замену символов
             String newContent = content.replace(',', ';')
                     .replace('.', ',')
                     .replace(';', '.')
-                    .replaceAll("����,", "����.");
+                    .replaceAll("Коэф,", "Коэф.");
             try (FileWriter writer = new FileWriter(newLog, charset)) {
                 writer.write(newContent);
             }
